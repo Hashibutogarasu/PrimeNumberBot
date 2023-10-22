@@ -14,7 +14,7 @@ const check = {
                 embeds: [
                     new EmbedBuilder()
                         .setTitle("素数判定結果")
-                        .setDescription(prime ? "素数です" : `${number}は素数じゃないよ(笑)`)
+                        .setDescription(prime ? `${number}は素数です` : `${number}は素数じゃないよ(笑)`)
                         .setColor(prime ? "Green" : "Red")
                         .setTimestamp(),
                 ]
