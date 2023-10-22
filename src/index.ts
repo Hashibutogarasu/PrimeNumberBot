@@ -12,7 +12,7 @@ const client = new Client({
 });
 
 client.on("ready", (client) => {
-    register();
+    register(client);
 });
 
 client.on("interactionCreate", async (cmd) => {

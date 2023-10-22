@@ -1,5 +1,4 @@
-import { CommandInteraction, REST, Routes } from 'discord.js';
-import { clientId } from './config.json';
+import { Client, CommandInteraction, REST, Routes } from 'discord.js';
 import fs from 'node:fs';
 import path from 'node:path';
 require('dotenv').config();
@@ -57,7 +56,7 @@ export async function execute(interaction: CommandInteraction): Promise<Array<an
     return data.commands;
 }
 
-export async function register() {
+export async function register(client: Client<true>) {
     const commands = await getCommands();
 
     const rest = new REST().setToken(process.env.TOKEN as string);
@@ -65,7 +64,7 @@ export async function register() {
     try {
         console.log(`Started refreshing ${commands.length} application (/) commands.`);
         const data = await rest.put(
-            Routes.applicationCommands(clientId),
+            Routes.applicationCommands(client.application.id),
             { body: commands },
         );
         console.log(`Successfully reloaded ${(data as any[]).length} application (/) commands.`);
