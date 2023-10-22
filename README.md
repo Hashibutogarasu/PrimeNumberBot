@@ -2,7 +2,7 @@
 
 Dockerを入れてる場合
 ```
-docker build -t primenumberbot .
+docker compose up -d
 ```
 で後は実行するだけ
 
